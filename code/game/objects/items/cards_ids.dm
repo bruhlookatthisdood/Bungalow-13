@@ -711,7 +711,6 @@ update_label()
 	name = "Genpop Prisoner ID card"
 	desc = "You are a number, you are not a free man."
 	icon_state = "orange"
-	item_state = "orange-id"
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
 	assignment = "Prisoner"
