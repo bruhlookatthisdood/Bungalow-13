@@ -95,17 +95,19 @@
 	var/desired_sentence = 0 //What sentence do you want to give them?
 	var/desired_crime = null //What is their crime?
 	var/desired_name = null
-	var/obj/item/radio/Radio //needed to send messages to sec radio
+	var/obj/item/radio/Radio //needed to send messages to	 sec radio
 	//Preset crimes that you can set, without having to remember times
 	var/static/list/crimespetty = list(
-		list(name="Petty Theft", tooltip="To take items from areas one does not have access to or to take items belonging to others or the station as a whole.", colour="good",icon="hand-holding",sentence="1"),
-		list(name="Vandalism (Cosmetic)", tooltip="To deliberately vandalize the station.", colour="good",icon="spray-can",sentence="1"),
-		list(name="Resisting Arrest", tooltip="To not cooperate with an officer who attempts a proper arrest.", colour="good",icon="running",sentence="1"),
-		list(name="Drug Possession", tooltip="To possess space drugs or other narcotics by unauthorized personnel.", colour="good",icon="joint",sentence="1"),
-		list(name="Indecent Exposure", tooltip="To be intentionally and publicly unclothed.", colour="good",icon="flushed",sentence="1"),
-		list(name="Trespass", tooltip="To be in an area which a person does not have access to. This counts for general areas of the ship, and trespass in restricted areas is a more serious crime.", colour="good",icon="door-open",sentence="1")
+		list(name="Petty Theft", tooltip="To take items from areas one does not have access to or to take items belonging to others or the station as a whole.", colour="good",icon="hand-holding",sentence="3"),
+		list(name="Drug Possession", tooltip="To possess space drugs or other narcotics by unauthorized personnel.", colour="good",icon="joint",sentence="3"),
+		list(name="Vandalism", tooltip="To deliberately vandalize the station.", colour="good",icon="spray-can",sentence="3"),
+		list(name="Obstruction of Justice", tooltip="Any action that corruptly impedes, obstructs or impedes the administration of justice.", colour="good",icon="")
+		list(name="Creating a workplace hazard", tooltip="To endanger the crew or station through negligent or irresponsible, but not deliberately malicious, actions.",colour="good",icon="bomb",sentence="3"),
+		list(name="Insubordination", tooltip="To disobey a lawful direct order from one's superior officer.",colour="good",icon="user-minus",sentence="3"),
+		list(name="Trespass", tooltip="To be in an area which a person does not have access to. This counts for general areas of the ship, and trespass in restricted areas is a more serious crime.", colour="good",icon="door-open",sentence="3")
 	)
 	var/static/list/crimesminor = list(
+		list(name="Resisting Arrest", tooltip="To not cooperate with an officer who attempts a proper arrest.", colour="average",icon="running",sentence="3"),
 		list(name="Vandalism (Destructive)", tooltip="To deliberately damage the station without malicious intent.", colour="average",icon="car-crash",sentence="3"),
 		list(name="Narcotics Distribution", tooltip="To distribute narcotics and other controlled substances.", colour="average",icon="tablets",sentence="3"),
 		list(name="Possession of a Weapon", tooltip="To be in possession of a dangerous item that is not part of their job role.", colour="average",icon="bolt",sentence="3"),
@@ -115,9 +117,7 @@
 	var/static/list/crimesmoderate = list(
 		list(name="Theft", tooltip="To steal restricted or dangerous items",colour="average",icon="people-carry",sentence="5"),
 		list(name="Rioting", tooltip="To partake in an unauthorized and disruptive assembly of crewmen that refuse to disperse.",colour="average",icon="users",sentence="5"),
-		list(name="Creating a workplace hazard", tooltip="To endanger the crew or station through negligent or irresponsible, but not deliberately malicious, actions.",colour="average",icon="bomb",sentence="5"),
 		list(name="Breaking and Entry", tooltip="Forced entry to areas where the subject does not have access to. This counts for general areas, and breaking into restricted areas is a more serious crime.",colour="average",icon="door-closed",sentence="5"),
-		list(name="Insubordination", tooltip="To disobey a lawful direct order from one's superior officer.",colour="average",icon="user-minus",sentence="5"),
 		list(name="Animal Cruelty", tooltip="To kill an animal for reasons other than research, food purposes, self-defense purposes, or as a resolution to animal overpopulation.",colour="average",icon="user-minus",sentence="5")
 	)
 	var/static/list/crimesmajor = list(
