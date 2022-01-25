@@ -79,6 +79,21 @@
 "cp" = (
 /turf/open/floor/plasteel/dark,
 /area/ruin/powered/mechanicus/dorms)
+"cw" = (
+/obj/structure/closet/crate/science{
+	name = "nanites crate"
+	},
+/obj/item/circuitboard/computer/nanite_cloud_controller,
+/obj/item/circuitboard/machine/nanite_program_hub,
+/obj/item/circuitboard/machine/nanite_programmer,
+/obj/item/circuitboard/machine/public_nanite_chamber,
+/obj/item/disk/nanite_program/repairing,
+/obj/item/disk/nanite_program,
+/obj/item/nanite_scanner,
+/obj/item/nanite_remote,
+/obj/item/circuitboard/computer/research,
+/turf/open/floor/plasteel/dark,
+/area/ruin/powered/mechanicus)
 "cT" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -453,6 +468,16 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/powered/mechanicus/dorms)
+"vI" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/structure/frame/computer{
+	dir = 12
+	},
+/turf/open/floor/plasteel/dark,
+/area/ruin/powered/mechanicus/surgery)
 "wv" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -981,20 +1006,6 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/powered/mechanicus/surgery)
-"OW" = (
-/obj/structure/closet/crate/science{
-	name = "nanites crate"
-	},
-/obj/item/circuitboard/computer/nanite_cloud_controller,
-/obj/item/circuitboard/machine/nanite_program_hub,
-/obj/item/circuitboard/machine/nanite_programmer,
-/obj/item/circuitboard/machine/public_nanite_chamber,
-/obj/item/disk/nanite_program/repairing,
-/obj/item/disk/nanite_program,
-/obj/item/nanite_scanner,
-/obj/item/nanite_remote,
-/turf/open/floor/plasteel/dark,
-/area/ruin/powered/mechanicus)
 "Pm" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
@@ -1020,18 +1031,6 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/powered/mechanicus)
-"Rn" = (
-/obj/structure/frame/computer{
-	anchored = 1;
-	dir = 1;
-	icon_state = "0"
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/blue,
-/turf/open/floor/plasteel/dark,
-/area/ruin/powered/mechanicus/surgery)
 "Rx" = (
 /turf/open/floor/plasteel/dark,
 /area/ruin/powered/mechanicus/vault)
@@ -1459,7 +1458,7 @@ aj
 Zg
 Yk
 Yk
-Rn
+vI
 Lh
 wv
 SO
@@ -1538,7 +1537,7 @@ vd
 nw
 Lh
 Sm
-OW
+cw
 xd
 xd
 la
