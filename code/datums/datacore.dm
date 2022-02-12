@@ -179,6 +179,16 @@
 		"Silicon"
 		)
 
+	if(SSmaptype.maptype == "goonlite")
+		manifest_out = list(
+		"Command",
+		"Security",
+		"Logistics",
+		"Medsci",
+		"Service",
+		"Silicon"
+		)
+
 	if(SSmaptype.maptype == "casio")
 		manifest_out = list(
 		"Command",
@@ -210,6 +220,13 @@
 	if(SSmaptype.maptype == "solgov")
 		manifest_out = list(
 			"Solgov"
+		)
+
+	if(SSmaptype.maptype == "solgov2")
+		manifest_out = list(
+			"Solgov",
+			"NT Marines",
+			"Operations"
 		)
 
 	var/list/departments
@@ -250,6 +267,14 @@
 			"Silicon" = GLOB.nonhuman_positions)
 
 
+	if(SSmaptype.maptype == "goonlite")
+		departments = list(
+			"Command" = GLOB.command_positions,
+			"Security" = GLOB.security_positions,
+			"Logistics" = GLOB.logistics_positions,
+			"Medsci" = GLOB.medical_positions + GLOB.science_positions,
+			"Service" = GLOB.service_positions,
+			"Silicon" = GLOB.nonhuman_positions)
 
 	if(SSmaptype.maptype == "casio")
 		departments = list(
@@ -278,8 +303,9 @@
 
 	if(SSmaptype.maptype == "solgov")
 		departments = list(
-			"Solgov Personnel" = GLOB.solgov_positions)
-
+			"Solgov Personnel" = GLOB.solgov_positions,
+			"NT Remnants" = GLOB.ntmarines_positions,
+			"Syndicate Outpost" = GLOB.operations_positions)
 
 	for(var/datum/data/record/t in GLOB.data_core.general)
 		var/name = t.fields["name"]

@@ -1,9 +1,9 @@
 GLOBAL_LIST_INIT(command_positions,list(
 	"Captain",
 
-	//Fucking Casiostation
-	"NT Captain",
+	//Nonstandard heads
 	"Blueshield",
+	"Communication Officer",
 
 	//Other Heads of staff
 	"Head of Personnel",
@@ -63,9 +63,10 @@ GLOBAL_LIST_INIT(service_positions, list(
 
 GLOBAL_LIST_INIT(security_positions, list(
 	"Head of Security",
+	"Nanotrasen Security Operative",
 	"Warden",
 	"Detective",
-//	"Deputy", // Tegustation Deupty edit: Adds them as a Security job
+	"Deputy", // Tegustation Deupty edit: Adds them as a Security job
 	"Security Officer"))
 
 
@@ -96,13 +97,26 @@ GLOBAL_LIST_INIT(operations_positions, list(
 	"Pilot Officer",
 	"Staff Officer",
 	"Marine",
-	"Survivor"))
+	"Survivor",
+
+	//Romulus
+	"Syndicate Outpost Leader",
+	"Syndicate Outpost Agent",
+	"Syndicate Outpost Medic",
+	"Syndicate Outpost Scientist",
+	"Syndicate Outpost Explorer"))
 
 GLOBAL_LIST_INIT(logistics_positions, list(
 	"Logistics Officer",
 	"Requisitions Chief",
 	"Deckhand",
 	"Ordinance Technician",
+
+	//Goonpacked stuff
+	"Chief Engineer",
+	"Station Engineer",
+	"Cargo Technician",
+	"Miner",
 	"Mechanic"))
 
 GLOBAL_LIST_INIT(police_positions, list(
@@ -123,8 +137,12 @@ GLOBAL_LIST_INIT(ntmarines_positions, list(
 	"NT Squad Leader",
 	"NT Military Police",
 	"NT Vehicle Operator",
-	"NT Marine"))
+	"NT Marine",
 
+//Romulus
+	"NT Remnant Lieutenant",
+	"NT Remnant Cadet",
+	"NT Remnant Auxiliary"))
 
 //Other Gamemodes
 GLOBAL_LIST_INIT(solgov_positions, list(
@@ -137,6 +155,7 @@ GLOBAL_LIST_INIT(solgov_positions, list(
 	"Soldier",
 	"Security",
 	"Civillian"))
+
 
 GLOBAL_LIST_INIT(position_categories, list(
 	EXP_TYPE_COMMAND = list("jobs" = command_positions, "color" = "#ccccff"),
