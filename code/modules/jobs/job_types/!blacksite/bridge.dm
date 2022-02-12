@@ -14,7 +14,7 @@
 	minimal_access = list(ACCESS_HEADS)
 	paycheck = PAYCHECK_CENTCOM
 	paycheck_department = ACCOUNT_SEC
-	display_order = JOB_DISPLAY_ORDER_COMMAND
+	display_order = JOB_DISPLAY_ORDER_SECRETARY
 
 /datum/outfit/job/bridge
 	name = "NT Bridge Officer"
@@ -26,5 +26,4 @@
 	gloves = /obj/item/clothing/gloves/color/black
 	ears = /obj/item/radio/headset/headset_cent/alt
 	back = /obj/item/storage/backpack/satchel/leather
-	accessory = /obj/item/clothing/accessory/medal/rank/nt/lt
 	id = /obj/item/card/id/centcom

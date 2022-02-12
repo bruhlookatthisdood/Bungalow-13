@@ -83,7 +83,7 @@
 	var/rawchar = ""
 	for(var/i = 1, i <= leng, i += length(rawchar))
 		rawchar = newletter = phrase[i]
-		if(prob(33))
+		if(rand(1, 3) == 3)
 			var/lowerletter = lowertext(newletter)
 			if(lowerletter == "o")
 				newletter = "u"
@@ -95,19 +95,18 @@
 				newletter = "oo"
 			else if(lowerletter == "c")
 				newletter = "k"
-		if(prob(5))
+		if(rand(1, 20) == 20)
 			if(newletter == " ")
 				newletter = "...huuuhhh..."
 			else if(newletter == ".")
 				newletter = " *BURP*."
-		if(prob(15))
-			switch(rand(1,3))
-				if(1)
-					newletter += "'"
-				if(2)
-					newletter += "[newletter]"
-				if(3)
-					newletter += "[newletter][newletter]"
+		switch(rand(1, 20))
+			if(1)
+				newletter += "'"
+			if(10)
+				newletter += "[newletter]"
+			if(20)
+				newletter += "[newletter][newletter]"
 		. += "[newletter]"
 	return sanitize(.)
 
@@ -120,7 +119,7 @@
 	var/rawchar = ""
 	for(var/i = 1, i <= leng, i += length(rawchar))
 		rawchar = newletter = phrase[i]
-		if(prob(50))
+		if(rand(1, 2) == 2)
 			var/lowerletter = lowertext(newletter)
 			if(lowerletter == "o")
 				newletter = "u"
@@ -134,24 +133,23 @@
 				newletter = " NAR "
 			else if(lowerletter == "s")
 				newletter = " SIE "
-		if(prob(25))
+		if(rand(1, 4) == 4)
 			if(newletter == " ")
 				newletter = " no hope... "
 			else if(newletter == "H")
 				newletter = " IT COMES... "
 
-		if(prob(33))
-			switch(rand(1, 5))
-				if(1)
-					newletter = "'"
-				if(2)
-					newletter += "agn"
-				if(3)
-					newletter = "fth"
-				if(4)
-					newletter = "nglu"
-				if(5)
-					newletter = "glor"
+		switch(rand(1, 15))
+			if(1)
+				newletter = "'"
+			if(2)
+				newletter += "agn"
+			if(3)
+				newletter = "fth"
+			if(4)
+				newletter = "nglu"
+			if(5)
+				newletter = "glor"
 		. += newletter
 	return sanitize(.)
 
@@ -492,7 +490,7 @@
 			colored_message = "(ASAY) [colored_message]"
 		if(LOG_EMOTE)
 			colored_message = "(EMOTE) [colored_message]"
-
+	
 	var/list/timestamped_message = list("\[[time_stamp()]\] [key_name(src)] [loc_name(src)] (Event #[LAZYLEN(logging[smessage_type])])" = colored_message)
 
 	logging[smessage_type] += timestamped_message

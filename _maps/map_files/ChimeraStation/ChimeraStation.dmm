@@ -6737,6 +6737,11 @@
 /obj/item/banner/command/mundane,
 /turf/open/floor/wood,
 /area/crew_quarters/heads/captain/private)
+"cHk" = (
+/obj/structure/grille,
+/obj/structure/grille,
+/turf/closed/wall/r_wall,
+/area/engine/atmos)
 "cHl" = (
 /obj/structure/chair{
 	dir = 4
@@ -20199,8 +20204,8 @@
 /turf/open/floor/plasteel/dark,
 /area/science/xenobiology)
 "iaU" = (
-/obj/structure/bed/dogbed/renault,
 /mob/living/simple_animal/pet/fox/renault,
+/obj/structure/bed/dogbed/renault,
 /turf/open/floor/wood,
 /area/crew_quarters/heads/captain)
 "ibe" = (
@@ -97106,7 +97111,7 @@ hqk
 hqk
 hqk
 hqk
-hqk
+cHk
 taD
 pcV
 bhy

@@ -296,8 +296,7 @@ GLOBAL_LIST_EMPTY(species_list)
 
 	var/holding = user.get_active_held_item()
 
-	if(!(timed_action_flags & IGNORE_SLOWDOWNS))
-		delay *= user.cached_multiplicative_actions_slowdown
+	delay *= user.cached_multiplicative_actions_slowdown
 
 	var/datum/progressbar/progbar
 	if(progress)
@@ -353,8 +352,7 @@ GLOBAL_LIST_EMPTY(species_list)
 		return FALSE
 	var/user_loc = user.loc
 
-	if(!(timed_action_flags & IGNORE_SLOWDOWNS))
-		time *= user.cached_multiplicative_actions_slowdown
+	time *= user.cached_multiplicative_actions_slowdown
 
 	var/drifting = FALSE
 	if(!user.Process_Spacemove(0) && user.inertia_dir)
@@ -377,9 +375,6 @@ GLOBAL_LIST_EMPTY(species_list)
 	var/datum/progressbar/progbar
 	if(progress)
 		progbar = new(user, time, targets[1])
-
-	if(!(timed_action_flags & IGNORE_SLOWDOWNS))
-		time *= user.cached_multiplicative_actions_slowdown
 
 	var/endtime = world.time + time
 	var/starttime = world.time

@@ -26,15 +26,10 @@
 	return TRUE
 
 /datum/game_mode/traitor/changeling/pre_setup()
-	var/no_restrictions = FALSE
-	if(prob(CONFIG_GET(number/no_job_restriction_chance)) && (GLOB.player_list.len > CONFIG_GET(number/no_job_restriction_pop)))
-		message_admins("RANDOM ALERT! Traitor+Changeling gamemode's job restrictions were removed! Any role can become an antagonist this round!")
-		no_restrictions = TRUE
-
-	if(CONFIG_GET(flag/protect_roles_from_antagonist) && !no_restrictions)
+	if(CONFIG_GET(flag/protect_roles_from_antagonist))
 		restricted_jobs += protected_jobs
 
-	if(CONFIG_GET(flag/protect_assistant_from_antagonist) && !no_restrictions)
+	if(CONFIG_GET(flag/protect_assistant_from_antagonist))
 		restricted_jobs += "Assistant"
 
 	var/list/datum/mind/possible_changelings = get_players_for_role(ROLE_CHANGELING)

@@ -8,7 +8,7 @@
 	selection_color = "#b7edda"
 	maptype = "solgov"
 
-	outfit = /datum/outfit/job/solgov
+	outfit = /datum/outfit/job/solgovengineer
 
 	access = list(ACCESS_ENGINE)
 	minimal_access = list(ACCESS_ENGINE)
@@ -19,4 +19,10 @@
 
 	display_order = JOB_DISPLAY_ORDER_STATION_ENGINEER
 	bounty_types = CIV_JOB_ENG
+
+/datum/outfit/job/solgovengineer
+	name = "Solgov Survivor (Engineer)"
+	id = /obj/item/card/id/solgov
+	jobtype = /datum/job/solgovengineer
+	belt = null
 

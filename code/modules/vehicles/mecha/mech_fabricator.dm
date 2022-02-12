@@ -53,7 +53,6 @@
 								"Durand",
 								"H.O.N.K",
 								"Phazon",
-								"Savannah-Ivanov",
 								"Exosuit Equipment",
 								"Exosuit Ammunition",
 								"Cyborg Upgrade Modules",
@@ -100,7 +99,7 @@
 								)
 		if (Ml.rating >= 4)
 			part_sets += list(
-								"Durand","H.O.N.K","Gygax", "Savannah-Ivanov", "Exosuit Ammunition"
+								"Durand","H.O.N.K","Gygax", "Exosuit Ammunition"
 								)
 		if (Ml.rating >= 5)
 			part_sets += list(
@@ -180,8 +179,6 @@
 					category_override += "Gygax"
 				if(mech_types & EXOSUIT_MODULE_DURAND)
 					category_override += "Durand"
-				if(mech_types & EXOSUIT_MODULE_SAVANNAH)
-					category_override += "Savannah"
 				if(mech_types & EXOSUIT_MODULE_HONK)
 					category_override += "H.O.N.K"
 				if(mech_types & EXOSUIT_MODULE_PHAZON)

@@ -6,7 +6,6 @@
 	spawn_positions = 2
 	supervisors = "the chief medical officer"
 	selection_color = "#ccddee"
-	mapexclude = list("goonlite")
 
 	outfit = /datum/outfit/job/paramedic
 

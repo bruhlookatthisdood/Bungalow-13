@@ -4,7 +4,6 @@
 	name = ".357 bullet casing"
 	desc = "A .357 bullet casing."
 	caliber = CALIBER_357
-	icon_state = "357-casing"
 	projectile_type = /obj/projectile/bullet/a357
 
 /obj/item/ammo_casing/a357/match

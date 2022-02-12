@@ -7,7 +7,6 @@
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
 	opacity = FALSE
-	///What table is this flipped table a type of?
 	var/table_type = /obj/structure/table
 
 /obj/structure/flippedtable/CanAllowThrough(atom/movable/mover, turf/target)
@@ -50,6 +49,7 @@
 		qdel(src)
 
 //TABLES
+
 /obj/structure/table/CtrlShiftClick(mob/living/user)
 	. = ..()
 	if(!istype(user) || !user.can_interact_with(src))

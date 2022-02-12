@@ -27,11 +27,11 @@
 		/datum/language/moffic,
 		/datum/language/sylvan,
 		/datum/language/shadowtongue,
-		/datum/language/terrum,
-		/datum/language/nekomimetic,
-		/datum/language/beecommon, //BUNGALOW EDIT START
 		/datum/language/spacer,
-		/datum/language/russian // BUNGALOW EDIT END
+		/datum/language/terrum,
+		/datum/language/russian, // TEGU
+		/datum/language/nekomimetic,
+		/datum/language/beecommon //bee
 	))
 
 /obj/item/organ/tongue/Initialize(mapload)

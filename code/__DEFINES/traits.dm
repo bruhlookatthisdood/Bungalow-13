@@ -254,9 +254,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NOBLEED "nobleed" //This carbon doesn't bleed
 #define TRAIT_BUTTERFINGERS		"butterfingers" //drop items ocasionally, used by stimulants
 
-/// This mobs bodyparts are invisible but still clickable.
-#define TRAIT_INVISIBLE_MAN "invisible_man"
-
 // You can stare into the abyss, but it does not stare back.
 // You're immune to the hallucination effect of the supermatter, either
 // through force of will, or equipment. Present on /mob or /datum/mind
@@ -374,14 +371,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define CAT_QUIRK_NOTES 1
 #define CAT_QUIRK_MINOR_DISABILITY 2
 #define CAT_QUIRK_MAJOR_DISABILITY 3
-
-/* Traits for ventcrawling.
- * Both give access to ventcrawling, but *_NUDE requires the user to be
- * wearing no clothes and holding no items. If both present, *_ALWAYS
- * takes precedence.
- */
-#define TRAIT_VENTCRAWLER_ALWAYS "ventcrawler_always"
-#define TRAIT_VENTCRAWLER_NUDE "ventcrawler_nude"
 
 // common trait sources
 #define TRAIT_GENERIC "generic"

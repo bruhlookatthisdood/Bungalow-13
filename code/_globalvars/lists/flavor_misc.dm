@@ -132,7 +132,6 @@ GLOBAL_LIST_INIT(ai_core_display_screens, sortList(list(
 	"Blue",
 	"Cat",
 	"Clown",
-	"Code",
 	"Database",
 	"Dorf",
 	"Firewall",

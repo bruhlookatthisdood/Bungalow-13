@@ -8,7 +8,6 @@
 	selection_color = "#ccddee"
 	exp_type = EXP_TYPE_CREW
 	exp_requirements = 60
-	mapexclude = list("goonlite")
 
 	outfit = /datum/outfit/job/virologist
 

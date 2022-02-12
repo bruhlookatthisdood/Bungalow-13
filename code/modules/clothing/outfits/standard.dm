@@ -8,7 +8,7 @@
 /datum/outfit/centcom/spec_ops
 	name = "Special Ops Officer"
 
-	uniform = /obj/item/clothing/under/bni/senior
+	uniform = /obj/item/clothing/under/syndicate
 	suit = /obj/item/clothing/suit/space/officer
 	shoes = /obj/item/clothing/shoes/combat/swat
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
@@ -268,58 +268,32 @@
 	..()
 
 
-/datum/outfit/centcom/commander/provost
-	name = "Provost Officer"
-	uniform = /obj/item/clothing/under/bni/officer
-	suit = /obj/item/clothing/suit/armor/captain/flag/provost
+/datum/outfit/centcom/admiral
+	name = "Admiral"
+
+	uniform = /obj/item/clothing/under/rank/centcom/commander
+	suit = /obj/item/clothing/suit/pirate/captain
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch
-	belt = /obj/item/gun/ballistic/revolver/hakita
-	head = /obj/item/clothing/head/beret/sec
-	accessory = /obj/item/clothing/accessory/medal/rank/nt/pvst
+	shoes = /obj/item/clothing/shoes/combat/swat
+	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
+	ears = /obj/item/radio/headset/heads/headset_cent/commander
+	belt = /obj/item/lighter
+	r_pocket = /obj/item/gun/ballistic/automatic/pistol/deagle/camo
+	l_pocket = /obj/item/gun/ballistic/automatic/pistol/deagle/camo
+	back = /obj/item/storage/backpack/satchel/leather
+	id = /obj/item/card/id/admiral
 
+/datum/outfit/centcom/admiral/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+	if(visualsOnly)
+		return
 
-/datum/outfit/centcom/commander/radm
-	name = "Rear Admiral"
-	uniform = /obj/item/clothing/under/bni/officer
-	suit = /obj/item/clothing/suit/armor/captain/flag
-	glasses = /obj/item/clothing/glasses/thermal/eyepatch
-	belt = /obj/item/gun/ballistic/revolver/hakita
-	head = null
-	neck = /obj/item/clothing/neck/cloak/flag
-	accessory = /obj/item/clothing/accessory/medal/rank/nt/radm
-
-
-/datum/outfit/centcom/commander/vadm
-	name = "Vice Admiral"
-	uniform = /obj/item/clothing/under/bni/officer
-	suit = /obj/item/clothing/suit/armor/captain/flag/vadm
-	glasses = /obj/item/clothing/glasses/thermal/eyepatch
-	belt = /obj/item/gun/ballistic/revolver/hakita
-	head = /obj/item/clothing/head/beret/ce
-	accessory = /obj/item/clothing/accessory/medal/rank/nt/vadm
-
-
-/datum/outfit/centcom/commander/fadm
-	name = "Fleet Admiral"
-	uniform = /obj/item/clothing/under/bni/officer
-	suit = /obj/item/clothing/suit/armor/captain/flag/fadm
-	glasses = null
-	belt = /obj/item/gun/ballistic/revolver/hakita
-	head = /obj/item/clothing/head/beret/sec/navyhos/black
-	backpack_contents = list(/obj/item/clothing/suit/armor/captain/flag/fadm/fancy=1,\
-		/obj/item/clothing/suit/armor/captain/flag/fadm/combat=1,\
-		/obj/item/clothing/suit/armor/captain/flag/fadm/offduty=1)
-	accessory = /obj/item/clothing/accessory/medal/rank/nt/fadm
-
-/datum/outfit/centcom/commander/gadm
-	name = "Grand Admiral"
-	uniform = /obj/item/clothing/under/bni/officer
-	suit = /obj/item/clothing/suit/armor/captain/flag/gadm
-	glasses = null
-	belt = /obj/item/gun/ballistic/revolver/hakita
-	head = /obj/item/clothing/head/beret/sec/navyhos/black
-	accessory = /obj/item/clothing/accessory/medal/rank/nt/gadm
-
+	var/obj/item/card/id/W = H.wear_id
+	W.access = get_all_accesses()
+	W.access += get_centcom_access("CenCom Commander")
+	W.assignment = "Admiral"
+	W.registered_name = H.real_name
+	W.update_label()
+	..()
 
 
 /datum/outfit/ghost_cultist
@@ -432,7 +406,7 @@
 /datum/outfit/centcom/death_commando
 	name = "Death Commando"
 
-	uniform = /obj/item/clothing/under/bni/senior
+	uniform = /obj/item/clothing/under/rank/centcom/commander
 	suit = /obj/item/clothing/suit/space/hardsuit/deathsquad
 	shoes = /obj/item/clothing/shoes/combat/swat
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
@@ -444,7 +418,6 @@
 	suit_store = /obj/item/tank/internals/emergency_oxygen/double
 	belt = /obj/item/gun/ballistic/revolver/mateba
 	l_hand = /obj/item/gun/energy/pulse/loyalpin
-	accessory = /obj/item/clothing/accessory/medal/rank/nt/bnisnr
 	id = /obj/item/card/id/ert/deathsquad
 	ears = /obj/item/radio/headset/headset_cent/alt
 
@@ -475,12 +448,10 @@
 /datum/outfit/centcom/death_commando/officer
 	name = "Death Commando Officer"
 	head = /obj/item/clothing/head/helmet/space/beret
-	uniform = /obj/item/clothing/under/bni/officer
-	accessory = /obj/item/clothing/accessory/medal/rank/nt/cpt
 
 /datum/outfit/chrono_agent
 	name = "Timeline Eradication Agent"
-	uniform = /obj/item/clothing/under/bni/officer
+	uniform = /obj/item/clothing/under/color/white
 	suit = /obj/item/clothing/suit/space/chronos
 	back = /obj/item/chrono_eraser
 	head = /obj/item/clothing/head/helmet/space/chronos
@@ -489,7 +460,7 @@
 
 /datum/outfit/debug //Debug objs plus hardsuit
 	name = "Debug outfit"
-	uniform = /obj/item/clothing/under/bni/officer
+	uniform = /obj/item/clothing/under/misc/patriotsuit
 	suit = /obj/item/clothing/suit/space/hardsuit/syndi/elite/debug
 	glasses = /obj/item/clothing/glasses/debug
 	ears = /obj/item/radio/headset/heads/headset_cent/commander
@@ -518,7 +489,7 @@
 
 /datum/outfit/admin //for admeem shenanigans and testing things that arent related to equipment, not a subtype of debug just in case debug changes things
 	name = "Admin outfit"
-	uniform = /obj/item/clothing/under/bni/officer
+	uniform = /obj/item/clothing/under/misc/patriotsuit
 	suit = /obj/item/clothing/suit/space/hardsuit/syndi/elite/admin
 	glasses = /obj/item/clothing/glasses/debug
 	ears = /obj/item/radio/headset/heads/headset_cent/commander

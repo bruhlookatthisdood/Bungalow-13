@@ -1,5 +1,5 @@
 
-/datum/job/deputy
+/datum/job/tegu/deputy
 	title = "Deputy"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("Head of Security")
@@ -82,7 +82,7 @@
 
 /datum/outfit/job/deputy
 	name = "Deputy"
-	jobtype = /datum/job/deputy
+	jobtype = /datum/job/tegu/deputy
 
 	head = /obj/item/clothing/head/beret/sec
 	belt = /obj/item/storage/belt/security/tegu_starter_full

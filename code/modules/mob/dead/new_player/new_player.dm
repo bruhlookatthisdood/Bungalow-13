@@ -423,9 +423,6 @@
 	if(SSmaptype.maptype == "planetary")
 		department_categories = list("Command", "Service", "Supply", "Engineering", "Medical", "Science", "Security", "Silicon")
 
-	if(SSmaptype.maptype == "goonlite")
-		department_categories = list("Command", "Service", "Security", "Logistics", "Medical", "Science")
-
 	if(SSmaptype.maptype == "casio")
 		department_categories = list("Command", "Service", "Supply", "Engineering", "Medical", "Science", "NT Marines", "Silicon")
 
@@ -433,7 +430,7 @@
 		department_categories = list("Syndicate Command", "Operations", "Triage", "Logistics", "Military Police")
 
 	if(SSmaptype.maptype == "solgov")
-		department_categories = list("Solgov", "NT Marines", "Operations")
+		department_categories = list("Solgov")
 
 	if(SSmaptype.maptype == "blacksite")
 		department_categories = list("NT Marines")

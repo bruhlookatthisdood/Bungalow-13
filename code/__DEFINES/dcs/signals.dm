@@ -425,7 +425,6 @@
 	#define COMPONENT_BLOCK_SWAP (1<<0)
 ///from base of /mob/verb/pointed: (atom/A)
 #define COMSIG_MOB_POINTED "mob_pointed"
-#define COMSIG_MOB_EMOTED(emote_key) "mob_emoted_[emote_key]"
 ///from /obj/structure/door/crush(): (mob/living/crushed, /obj/machinery/door/crushing_door)
 #define COMSIG_LIVING_DOORCRUSHED "living_doorcrush"
 
@@ -770,14 +769,6 @@
 ///sent from mecha action buttons to the mecha they're linked to
 #define COMSIG_MECHA_ACTION_TRIGGER "mecha_action_activate"
 
-///sent from clicking while you have no equipment selected. Sent before cooldown and adjacency checks, so you can use this for infinite range things if you want.
-#define COMSIG_MECHA_MELEE_CLICK "mecha_action_melee_click"
-/// Prevents click from happening.
-#define COMPONENT_CANCEL_MELEE_CLICK (1<<0)
-///sent from clicking while you have equipment selected.
-#define COMSIG_MECHA_EQUIPMENT_CLICK "mecha_action_equipment_click"
-/// Prevents click from happening.
-#define COMPONENT_CANCEL_EQUIPMENT_CLICK (1<<0)
 
 // /mob/living/carbon/human signals
 

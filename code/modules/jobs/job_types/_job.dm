@@ -79,9 +79,6 @@
 	///Job's faction, for maps like the starfury
 	var/corp = "nanotrasen"
 
-	//If this job is needed to load, then this the flag that keeps it to load. Assistants and Sec officers can't be unloaded.
-	var/loadalways = FALSE
-
 	//To help with Whitelisting shit
 	var/trusted_only = FALSE
 

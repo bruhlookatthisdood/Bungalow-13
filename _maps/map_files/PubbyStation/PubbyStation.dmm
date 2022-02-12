@@ -47630,7 +47630,9 @@
 /area/hallway/secondary/exit/departure_lounge)
 "gvi" = (
 /obj/effect/turf_decal/bot,
-/mob/living/simple_animal/hostile/retaliate/gator/steppy,
+/mob/living/simple_animal/sloth/paperwork{
+	name = "Taxes"
+	},
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
 "gvu" = (

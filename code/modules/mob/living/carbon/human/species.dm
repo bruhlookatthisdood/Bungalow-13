@@ -481,7 +481,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(!HD) //Decapitated
 		return
 
-	if(HAS_TRAIT(H, TRAIT_HUSK) || HAS_TRAIT(H, TRAIT_INVISIBLE_MAN))
+	if(HAS_TRAIT(H, TRAIT_HUSK))
 		return
 	var/datum/sprite_accessory/S
 	var/list/standing = list()
@@ -644,8 +644,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
  */
 /datum/species/proc/handle_body(mob/living/carbon/human/species_human)
 	species_human.remove_overlay(BODY_LAYER)
-	if(HAS_TRAIT(species_human, TRAIT_INVISIBLE_MAN))
-		return handle_mutant_bodyparts(species_human)
+
 	var/list/standing = list()
 
 	var/obj/item/bodypart/head/HD = species_human.get_bodypart(BODY_ZONE_HEAD)
@@ -777,7 +776,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	H.remove_overlay(BODY_ADJ_LAYER)
 	H.remove_overlay(BODY_FRONT_LAYER)
 
-	if(!mutant_bodyparts || HAS_TRAIT(H, TRAIT_INVISIBLE_MAN))
+	if(!mutant_bodyparts)
 		return
 
 	var/obj/item/bodypart/head/HD = H.get_bodypart(BODY_ZONE_HEAD)

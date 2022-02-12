@@ -24,7 +24,6 @@
 /turf/open/floor/plating/asteroid/airless,
 /area/ruin/unpowered)
 "i" = (
-/obj/machinery/bluespace_beacon,
 /turf/open/floor/plating/asteroid,
 /area/ruin/unpowered)
 "j" = (

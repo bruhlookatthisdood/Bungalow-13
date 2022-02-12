@@ -139,33 +139,29 @@
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = list(SMOOTH_GROUP_ALIEN_RESIN, SMOOTH_GROUP_ALIEN_WEEDS)
 	canSmoothWith = list(SMOOTH_GROUP_ALIEN_WEEDS, SMOOTH_GROUP_WALLS)
-	///the range of the weeds going to be affected by the node
-	var/node_range = NODERANGE
-	///the parent node that will determine if we grow or die
-	var/obj/structure/alien/weeds/node/parent_node
-	///the list of turfs that the weeds will not be able to grow over
-	var/static/list/blacklisted_turfs = list(
-		/turf/open/space,
-		/turf/open/chasm,
-		/turf/open/lava,
-		/turf/open/water,
-		/turf/open/openspace,
-	)
+	var/last_expand = 0 //last world.time this weed expanded
+	var/growth_cooldown_low = 150
+	var/growth_cooldown_high = 200
+	var/static/list/blacklisted_turfs
 
-/obj/structure/alien/weeds/Initialize(mapload)
-	//so the sprites line up right in the map editor
+
+/obj/structure/alien/weeds/Initialize()
 	pixel_x = -4
-	pixel_y = -4
+	pixel_y = -4 //so the sprites line up right in the map editor
 
 	. = ..()
 
+	if(!blacklisted_turfs)
+		blacklisted_turfs = typecacheof(list(
+			/turf/open/space,
+			/turf/open/chasm,
+			/turf/open/lava,
+			/turf/open/openspace))
+
 	set_base_icon()
 
-/obj/structure/alien/weeds/Destroy()
-	if(parent_node)
-		UnregisterSignal(parent_node, COMSIG_PARENT_QDELETING)
-		parent_node = null
-	return ..()
+	last_expand = world.time + rand(growth_cooldown_low, growth_cooldown_high)
+
 
 ///Randomizes the weeds' starting icon, gets redefined by children for them not to share the behavior.
 /obj/structure/alien/weeds/proc/set_base_icon()
@@ -187,62 +183,21 @@
 	. = ..()
 	AddElement(/datum/element/atmos_sensitive)
 
-/**
- * Called when the node is trying to grow/expand
- */
-/obj/structure/alien/weeds/proc/try_expand()
-	//we cant grow without a parent node
-	if(!parent_node)
-		return
-	//lets make sure we are still on a valid location
-	var/turf/src_turf = get_turf(src)
-	if(is_type_in_list(src_turf, blacklisted_turfs))
+/obj/structure/alien/weeds/proc/expand()
+	var/turf/U = get_turf(src)
+	if(is_type_in_typecache(U, blacklisted_turfs))
 		qdel(src)
-		return
-	//lets try to grow in a direction
-	for(var/turf/check_turf in src_turf.GetAtmosAdjacentTurfs())
-		//we cannot grow on blacklisted turfs
-		if(is_type_in_list(check_turf, blacklisted_turfs))
-			continue
-		var/obj/structure/alien/weeds/check_weed = locate() in check_turf
-		//we cannot grow onto other weeds
-		if(check_weed)
-			continue
-		//spawn a new one in the turf
-		check_weed = new(check_turf)
-		//set the new one's parent node to our parent node
-		check_weed.parent_node = parent_node
-		check_weed.RegisterSignal(parent_node, COMSIG_PARENT_QDELETING, .proc/after_parent_destroyed)
+		return FALSE
 
-/**
- * Called when the parent node is destroyed
- */
-/obj/structure/alien/weeds/proc/after_parent_destroyed()
-	if(!find_new_parent())
-		var/random_time = rand(2 SECONDS, 8 SECONDS)
-		addtimer(CALLBACK(src, .proc/do_qdel), random_time)
-
-/**
- * Called when trying to find a new parent after our previous parent died
- * Will return false if it can't find a new_parent
- * Will return the new parent if it can find one
- */
-/obj/structure/alien/weeds/proc/find_new_parent()
-	var/previous_node = parent_node
-	parent_node = null
-	for(var/obj/structure/alien/weeds/node/new_parent in range(node_range, src))
-		if(new_parent == previous_node)
+	for(var/turf/T in U.GetAtmosAdjacentTurfs())
+		if(locate(/obj/structure/alien/weeds) in T)
 			continue
-		parent_node = new_parent
-		RegisterSignal(parent_node, COMSIG_PARENT_QDELETING, .proc/after_parent_destroyed)
-		return parent_node
-	return FALSE
 
-/**
- * Called to delete the weed
- */
-/obj/structure/alien/weeds/proc/do_qdel()
-	qdel(src)
+		if(is_type_in_typecache(T, blacklisted_turfs))
+			continue
+
+		new /obj/structure/alien/weeds(T)
+	return TRUE
 
 /obj/structure/alien/weeds/should_atmos_process(datum/gas_mixture/air, exposed_temperature)
 	return exposed_temperature > 300
@@ -250,6 +205,7 @@
 /obj/structure/alien/weeds/atmos_expose(datum/gas_mixture/air, exposed_temperature)
 	take_damage(5, BURN, 0, 0)
 
+//Weed nodes
 /obj/structure/alien/weeds/node
 	name = "glowing resin"
 	desc = "Blue bioluminescence shines from beneath the surface."
@@ -257,48 +213,31 @@
 	icon_state = "weednode-0"
 	base_icon_state = "weednode"
 	light_color = LIGHT_COLOR_BLUE
-	///the range of the light for the node
 	light_power = 0.5
 	var/lon_range = 4
-	///the minimum time it takes for another weed to spread from this one
-	var/minimum_growtime = 5 SECONDS
-	///the maximum time it takes for another weed to spread from this one
-	var/maximum_growtime = 10 SECONDS
-	//the cooldown between each growth
-	COOLDOWN_DECLARE(growtime)
+	var/node_range = NODERANGE
+
 
 /obj/structure/alien/weeds/node/Initialize()
 	. = ..()
-
-	//give it light
 	set_light(lon_range)
-
-	//we are the parent node
-	parent_node = src
-
-	//destroy any non-node weeds on turf
-	var/obj/structure/alien/weeds/check_weed = locate(/obj/structure/alien/weeds) in loc
-	if(check_weed && check_weed != src)
-		qdel(check_weed)
-
-	//start the cooldown
-	COOLDOWN_START(src, growtime, rand(minimum_growtime, maximum_growtime))
-
-	//start processing
+	var/obj/structure/alien/weeds/W = locate(/obj/structure/alien/weeds) in loc
+	if(W && W != src)
+		qdel(W)
 	START_PROCESSING(SSobj, src)
+
 
 /obj/structure/alien/weeds/node/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
+
 /obj/structure/alien/weeds/node/process()
-	//we need to have a cooldown, so check and then add
-	if(!COOLDOWN_FINISHED(src, growtime))
-		return
-	COOLDOWN_START(src, growtime, rand(minimum_growtime, maximum_growtime))
-	//attempt to grow all weeds in range
-	for(var/obj/structure/alien/weeds/growing_weed in range(node_range, src))
-		growing_weed.try_expand()
+	for(var/obj/structure/alien/weeds/W in range(node_range, src))
+		if(W.last_expand <= world.time)
+			if(W.expand())
+				W.last_expand = world.time + rand(growth_cooldown_low, growth_cooldown_high)
+
 
 /obj/structure/alien/weeds/node/set_base_icon()
 	return //No icon randomization at init. The node's icon is already well defined.
